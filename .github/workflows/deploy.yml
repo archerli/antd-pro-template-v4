@@ -1,8 +1,7 @@
 name: AntD Github actions workflow
 on:
-  push:
-    branches:
-      - master
+  watch:
+    types: started
 jobs:
   build-and-deploy-to-github-pages:
     runs-on: ubuntu-latest
@@ -17,6 +16,8 @@ jobs:
       run: |
         export NODE_OPTIONS=--max-old-space-size=10230
         export PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=1
+        echo ${{github.event.sender.id}}
+        echo ${{github.event.repository.owner.id}}
         yarn
         yarn build
         echo $PATH
