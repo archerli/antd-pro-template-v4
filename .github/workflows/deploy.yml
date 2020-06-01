@@ -15,6 +15,8 @@ jobs:
         persist-credentials: false
     - name: Install and Build
       run: |
+        export NODE_OPTIONS=--max-old-space-size=10230
+        export PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=1
         yarn
         yarn build
         echo $PATH
@@ -26,6 +28,6 @@ jobs:
       with:
         ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
         BRANCH: gh-pages
-        FOLDER: build
+        FOLDER: dist
 
 
