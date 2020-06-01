@@ -11,6 +11,7 @@ export const isAntDesignPro = (): boolean => {
   if (ANT_DESIGN_PRO_ONLY_DO_NOT_USE_IN_YOUR_PRODUCTION === 'site') {
     return true;
   }
+  console.log('window.location.hostname',window.location.hostname);
   return window.location.hostname === 'preview.pro.ant.design';
 };
 
